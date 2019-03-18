@@ -1,0 +1,175 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>vwg.simlab</groupId>
+  <artifactId>javarti</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+
+  <properties>
+  	<version.compiler.plugin>3.6.1</version.compiler.plugin>
+  	<version.surfire.plugin>2.20</version.surfire.plugin>
+  	<version.failsafe.plugin>2.20</version.failsafe.plugin>
+  	<version.maven-native.plugin>1.0-alpha-9-SNAPSHOT</version.maven-native.plugin>
+  	
+	<!-- Cross plugins settings -->
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+	<!-- maven-compiler-plugin -->
+	<maven.compiler.target>1.8</maven.compiler.target>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.testTarget>${maven.compiler.target}</maven.compiler.testTarget>
+	<maven.compiler.testSource>${maven.compiler.source}</maven.compiler.testSource>
+
+	<!-- Options to override the compiler arguments directly on the compiler 
+		argument line to separate between what the IDE understands as the source 
+		level and what the Maven compiler actually use. -->
+	<maven.compiler.argument.target>${maven.compiler.target}</maven.compiler.argument.target>
+	<maven.compiler.argument.source>${maven.compiler.source}</maven.compiler.argument.source>
+	<maven.compiler.argument.testTarget>${maven.compiler.testTarget}</maven.compiler.argument.testTarget>
+	<maven.compiler.argument.testSource>${maven.compiler.testSource}</maven.compiler.argument.testSource>
+  </properties>
+  
+  <build>
+  	<pluginManagement>
+  		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.compiler.plugin}</version>
+				<configuration>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+					<source>${maven.compiler.argument.source}</source>
+					<target>${maven.compiler.argument.target}</target>
+					<testSource>${maven.compiler.argument.testSource}</testSource>
+					<testTarget>${maven.compiler.argument.testTarget}</testTarget>
+					<compilerArgs>
+						<arg>-Xlint:unchecked</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+			      <groupId>org.apache.maven.plugins</groupId>
+			      <artifactId>maven-surefire-plugin</artifactId>
+				  <version>${version.surfire.plugin}</version>
+			      <configuration>
+			        <forkMode>once</forkMode>
+			        <argLine>-Djava.library.path=${project.basedir}/../OpenRTI_JNI/build/Release</argLine>
+			        <includes>
+			            <include>**/*.class</include>
+			        </includes>
+			        <excludedGroups>
+			            vwg.simlab.junit.IntegrationTest
+			        </excludedGroups>
+   			        <!--  <systemProperties>
+			            <property>
+			              <name>PATH</name>
+			              <value>V:/opt/openRTI/v0_9_0/release/bin</value>
+			            </property>
+			        </systemProperties>-->
+          		</configuration>
+			</plugin>
+			<plugin>
+			      <groupId>org.apache.maven.plugins</groupId>
+			      <artifactId>maven-failsafe-plugin</artifactId>
+				  <version>${version.failsafe.plugin}</version>
+			      <configuration>
+			        <forkMode>once</forkMode>
+			        <argLine>-Djava.library.path=${project.basedir}/../OpenRTI_JNI/build/Release</argLine>
+			        <includes>
+			            <include>**/*.class</include>
+			        </includes>
+			        <groups>
+			            vwg.simlab.junit.IntegrationTest
+			        </groups>
+          		</configuration>
+			</plugin>
+			<plugin>
+			      <groupId>org.apache.maven.plugins</groupId>
+			      <artifactId>org.codehaus.mojo</artifactId>
+				  <version>${version.maven-native.plugin}</version>
+			</plugin>
+    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+			<plugin>
+				<groupId>org.eclipse.m2e</groupId>
+				<artifactId>lifecycle-mapping</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<lifecycleMappingMetadata>
+						<pluginExecutions>
+							<pluginExecution>
+								<pluginExecutionFilter>
+									<groupId>org.codehaus.mojo</groupId>
+									<artifactId>
+										native-maven-plugin
+									</artifactId>
+									<versionRange>
+										[1.0-alpha-8,)
+									</versionRange>
+									<goals>
+										<goal>javah</goal>
+									</goals>
+								</pluginExecutionFilter>
+								<action>
+									<ignore></ignore>
+								</action>
+							</pluginExecution>
+						</pluginExecutions>
+					</lifecycleMappingMetadata>
+				</configuration>
+			</plugin>
+  		</plugins>
+  	</pluginManagement>
+  	
+  	<plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>native-maven-plugin</artifactId>
+                <extensions>true</extensions>
+
+                <executions>
+                    <execution>
+                        <id>javah</id>
+                        <phase>compile</phase>
+                        <configuration>
+                            <!--  <javahOS>win32</javahOS> -->
+                            <javahProvider>default</javahProvider>
+                            <javahOutputDirectory>${project.build.directory}/jni/include</javahOutputDirectory>
+                            <workingDirectory>${basedir}</workingDirectory>
+                            <!--  <javahOutputFileName>RtiFactory_jni.h</javahOutputFileName> -->
+                            <javahClassNames>
+                                <javahClassName>hla.rti1516e.openrti.JniObject</javahClassName>
+                                <javahClassName>hla.rti1516e.openrti.RtiFactoryImpl</javahClassName>
+                                <javahClassName>hla.rti1516e.openrti.RTIambassadorImpl</javahClassName>
+                                <javahClassName>hla.rti1516e.openrti.ObjectInstanceHandleImpl</javahClassName>
+                                <javahClassName>hla.rti1516e.openrti.ObjectClassHandleImpl</javahClassName>
+                                <javahClassName>hla.rti1516e.openrti.FederateHandleImpl</javahClassName>
+                                <javahClassName>hla.rti1516e.openrti.AttributeHandleImpl</javahClassName>
+                                <javahClassName>hla.rti1516e.openrti.ParameterHandleImpl</javahClassName>
+                            </javahClassNames>
+                        </configuration>
+                        <goals>
+                            <goal>javah</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+  	</plugins>
+  </build>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>hla</groupId>
+  		<artifactId>rti1516e</artifactId>
+  		<version>1516.1-2010</version>
+  	</dependency>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.12</version>
+		<scope>test</scope>
+	</dependency>
+  </dependencies>
+  
+</project>

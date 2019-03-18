@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>hla</groupId>
+  <artifactId>rti1516e</artifactId>
+  <version>1516.1-2010</version>
+  
+  <properties>
+  	<version.compiler.plugin>3.6.1</version.compiler.plugin>
+  	
+	<!-- Cross plugins settings -->
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+	<!-- maven-compiler-plugin -->
+	<maven.compiler.target>1.8</maven.compiler.target>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.testTarget>${maven.compiler.target}</maven.compiler.testTarget>
+	<maven.compiler.testSource>${maven.compiler.source}</maven.compiler.testSource>
+
+	<!-- Options to override the compiler arguments directly on the compiler 
+		argument line to separate between what the IDE understands as the source 
+		level and what the Maven compiler actually use. -->
+	<maven.compiler.argument.target>${maven.compiler.target}</maven.compiler.argument.target>
+	<maven.compiler.argument.source>${maven.compiler.source}</maven.compiler.argument.source>
+	<maven.compiler.argument.testTarget>${maven.compiler.testTarget}</maven.compiler.argument.testTarget>
+	<maven.compiler.argument.testSource>${maven.compiler.testSource}</maven.compiler.argument.testSource>
+  </properties>
+  
+  <build>
+  	<pluginManagement>
+  		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.compiler.plugin}</version>
+				<configuration>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+					<source>${maven.compiler.argument.source}</source>
+					<target>${maven.compiler.argument.target}</target>
+					<testSource>${maven.compiler.argument.testSource}</testSource>
+					<testTarget>${maven.compiler.argument.testTarget}</testTarget>
+					<compilerArgs>
+						<arg>-Xlint:unchecked</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+  		</plugins>
+  	</pluginManagement>
+  </build>
+</project>

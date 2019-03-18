@@ -1,0 +1,182 @@
+Compiled from "FederateAmbassador.java"
+public interface hla.rti1516e.FederateAmbassador {
+  public abstract void connectionLost(java.lang.String) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;)V
+
+  public abstract void reportFederationExecutions(hla.rti1516e.FederationExecutionInformationSet) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/FederationExecutionInformationSet;)V
+
+  public abstract void synchronizationPointRegistrationSucceeded(java.lang.String) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;)V
+
+  public abstract void synchronizationPointRegistrationFailed(java.lang.String, hla.rti1516e.SynchronizationPointFailureReason) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;Lhla/rti1516e/SynchronizationPointFailureReason;)V
+
+  public abstract void announceSynchronizationPoint(java.lang.String, byte[]) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;[B)V
+
+  public abstract void federationSynchronized(java.lang.String, hla.rti1516e.FederateHandleSet) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;Lhla/rti1516e/FederateHandleSet;)V
+
+  public abstract void initiateFederateSave(java.lang.String) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;)V
+
+  public abstract void initiateFederateSave(java.lang.String, hla.rti1516e.LogicalTime) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;Lhla/rti1516e/LogicalTime;)V
+
+  public abstract void federationSaved() throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: ()V
+
+  public abstract void federationNotSaved(hla.rti1516e.SaveFailureReason) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/SaveFailureReason;)V
+
+  public abstract void federationSaveStatusResponse(hla.rti1516e.FederateHandleSaveStatusPair[]) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: ([Lhla/rti1516e/FederateHandleSaveStatusPair;)V
+
+  public abstract void requestFederationRestoreSucceeded(java.lang.String) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;)V
+
+  public abstract void requestFederationRestoreFailed(java.lang.String) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;)V
+
+  public abstract void federationRestoreBegun() throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: ()V
+
+  public abstract void initiateFederateRestore(java.lang.String, java.lang.String, hla.rti1516e.FederateHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;Ljava/lang/String;Lhla/rti1516e/FederateHandle;)V
+
+  public abstract void federationRestored() throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: ()V
+
+  public abstract void federationNotRestored(hla.rti1516e.RestoreFailureReason) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/RestoreFailureReason;)V
+
+  public abstract void federationRestoreStatusResponse(hla.rti1516e.FederateRestoreStatus[]) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: ([Lhla/rti1516e/FederateRestoreStatus;)V
+
+  public abstract void startRegistrationForObjectClass(hla.rti1516e.ObjectClassHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectClassHandle;)V
+
+  public abstract void stopRegistrationForObjectClass(hla.rti1516e.ObjectClassHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectClassHandle;)V
+
+  public abstract void turnInteractionsOn(hla.rti1516e.InteractionClassHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/InteractionClassHandle;)V
+
+  public abstract void turnInteractionsOff(hla.rti1516e.InteractionClassHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/InteractionClassHandle;)V
+
+  public abstract void objectInstanceNameReservationSucceeded(java.lang.String) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;)V
+
+  public abstract void objectInstanceNameReservationFailed(java.lang.String) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/lang/String;)V
+
+  public abstract void multipleObjectInstanceNameReservationSucceeded(java.util.Set<java.lang.String>) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/util/Set;)V
+
+  public abstract void multipleObjectInstanceNameReservationFailed(java.util.Set<java.lang.String>) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Ljava/util/Set;)V
+
+  public abstract void discoverObjectInstance(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.ObjectClassHandle, java.lang.String) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/ObjectClassHandle;Ljava/lang/String;)V
+
+  public abstract void discoverObjectInstance(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.ObjectClassHandle, java.lang.String, hla.rti1516e.FederateHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/ObjectClassHandle;Ljava/lang/String;Lhla/rti1516e/FederateHandle;)V
+
+  public abstract void reflectAttributeValues(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleValueMap, byte[], hla.rti1516e.OrderType, hla.rti1516e.TransportationTypeHandle, hla.rti1516e.FederateAmbassador$SupplementalReflectInfo) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleValueMap;[BLhla/rti1516e/OrderType;Lhla/rti1516e/TransportationTypeHandle;Lhla/rti1516e/FederateAmbassador$SupplementalReflectInfo;)V
+
+  public abstract void reflectAttributeValues(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleValueMap, byte[], hla.rti1516e.OrderType, hla.rti1516e.TransportationTypeHandle, hla.rti1516e.LogicalTime, hla.rti1516e.OrderType, hla.rti1516e.FederateAmbassador$SupplementalReflectInfo) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleValueMap;[BLhla/rti1516e/OrderType;Lhla/rti1516e/TransportationTypeHandle;Lhla/rti1516e/LogicalTime;Lhla/rti1516e/OrderType;Lhla/rti1516e/FederateAmbassador$SupplementalReflectInfo;)V
+
+  public abstract void reflectAttributeValues(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleValueMap, byte[], hla.rti1516e.OrderType, hla.rti1516e.TransportationTypeHandle, hla.rti1516e.LogicalTime, hla.rti1516e.OrderType, hla.rti1516e.MessageRetractionHandle, hla.rti1516e.FederateAmbassador$SupplementalReflectInfo) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleValueMap;[BLhla/rti1516e/OrderType;Lhla/rti1516e/TransportationTypeHandle;Lhla/rti1516e/LogicalTime;Lhla/rti1516e/OrderType;Lhla/rti1516e/MessageRetractionHandle;Lhla/rti1516e/FederateAmbassador$SupplementalReflectInfo;)V
+
+  public abstract void receiveInteraction(hla.rti1516e.InteractionClassHandle, hla.rti1516e.ParameterHandleValueMap, byte[], hla.rti1516e.OrderType, hla.rti1516e.TransportationTypeHandle, hla.rti1516e.FederateAmbassador$SupplementalReceiveInfo) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/InteractionClassHandle;Lhla/rti1516e/ParameterHandleValueMap;[BLhla/rti1516e/OrderType;Lhla/rti1516e/TransportationTypeHandle;Lhla/rti1516e/FederateAmbassador$SupplementalReceiveInfo;)V
+
+  public abstract void receiveInteraction(hla.rti1516e.InteractionClassHandle, hla.rti1516e.ParameterHandleValueMap, byte[], hla.rti1516e.OrderType, hla.rti1516e.TransportationTypeHandle, hla.rti1516e.LogicalTime, hla.rti1516e.OrderType, hla.rti1516e.FederateAmbassador$SupplementalReceiveInfo) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/InteractionClassHandle;Lhla/rti1516e/ParameterHandleValueMap;[BLhla/rti1516e/OrderType;Lhla/rti1516e/TransportationTypeHandle;Lhla/rti1516e/LogicalTime;Lhla/rti1516e/OrderType;Lhla/rti1516e/FederateAmbassador$SupplementalReceiveInfo;)V
+
+  public abstract void receiveInteraction(hla.rti1516e.InteractionClassHandle, hla.rti1516e.ParameterHandleValueMap, byte[], hla.rti1516e.OrderType, hla.rti1516e.TransportationTypeHandle, hla.rti1516e.LogicalTime, hla.rti1516e.OrderType, hla.rti1516e.MessageRetractionHandle, hla.rti1516e.FederateAmbassador$SupplementalReceiveInfo) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/InteractionClassHandle;Lhla/rti1516e/ParameterHandleValueMap;[BLhla/rti1516e/OrderType;Lhla/rti1516e/TransportationTypeHandle;Lhla/rti1516e/LogicalTime;Lhla/rti1516e/OrderType;Lhla/rti1516e/MessageRetractionHandle;Lhla/rti1516e/FederateAmbassador$SupplementalReceiveInfo;)V
+
+  public abstract void removeObjectInstance(hla.rti1516e.ObjectInstanceHandle, byte[], hla.rti1516e.OrderType, hla.rti1516e.FederateAmbassador$SupplementalRemoveInfo) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;[BLhla/rti1516e/OrderType;Lhla/rti1516e/FederateAmbassador$SupplementalRemoveInfo;)V
+
+  public abstract void removeObjectInstance(hla.rti1516e.ObjectInstanceHandle, byte[], hla.rti1516e.OrderType, hla.rti1516e.LogicalTime, hla.rti1516e.OrderType, hla.rti1516e.FederateAmbassador$SupplementalRemoveInfo) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;[BLhla/rti1516e/OrderType;Lhla/rti1516e/LogicalTime;Lhla/rti1516e/OrderType;Lhla/rti1516e/FederateAmbassador$SupplementalRemoveInfo;)V
+
+  public abstract void removeObjectInstance(hla.rti1516e.ObjectInstanceHandle, byte[], hla.rti1516e.OrderType, hla.rti1516e.LogicalTime, hla.rti1516e.OrderType, hla.rti1516e.MessageRetractionHandle, hla.rti1516e.FederateAmbassador$SupplementalRemoveInfo) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;[BLhla/rti1516e/OrderType;Lhla/rti1516e/LogicalTime;Lhla/rti1516e/OrderType;Lhla/rti1516e/MessageRetractionHandle;Lhla/rti1516e/FederateAmbassador$SupplementalRemoveInfo;)V
+
+  public abstract void attributesInScope(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;)V
+
+  public abstract void attributesOutOfScope(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;)V
+
+  public abstract void provideAttributeValueUpdate(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet, byte[]) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;[B)V
+
+  public abstract void turnUpdatesOnForObjectInstance(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;)V
+
+  public abstract void turnUpdatesOnForObjectInstance(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet, java.lang.String) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;Ljava/lang/String;)V
+
+  public abstract void turnUpdatesOffForObjectInstance(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;)V
+
+  public abstract void confirmAttributeTransportationTypeChange(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet, hla.rti1516e.TransportationTypeHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;Lhla/rti1516e/TransportationTypeHandle;)V
+
+  public abstract void reportAttributeTransportationType(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandle, hla.rti1516e.TransportationTypeHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandle;Lhla/rti1516e/TransportationTypeHandle;)V
+
+  public abstract void confirmInteractionTransportationTypeChange(hla.rti1516e.InteractionClassHandle, hla.rti1516e.TransportationTypeHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/InteractionClassHandle;Lhla/rti1516e/TransportationTypeHandle;)V
+
+  public abstract void reportInteractionTransportationType(hla.rti1516e.FederateHandle, hla.rti1516e.InteractionClassHandle, hla.rti1516e.TransportationTypeHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/FederateHandle;Lhla/rti1516e/InteractionClassHandle;Lhla/rti1516e/TransportationTypeHandle;)V
+
+  public abstract void requestAttributeOwnershipAssumption(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet, byte[]) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;[B)V
+
+  public abstract void requestDivestitureConfirmation(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;)V
+
+  public abstract void attributeOwnershipAcquisitionNotification(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet, byte[]) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;[B)V
+
+  public abstract void attributeOwnershipUnavailable(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;)V
+
+  public abstract void requestAttributeOwnershipRelease(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet, byte[]) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;[B)V
+
+  public abstract void confirmAttributeOwnershipAcquisitionCancellation(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandleSet) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandleSet;)V
+
+  public abstract void informAttributeOwnership(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandle, hla.rti1516e.FederateHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandle;Lhla/rti1516e/FederateHandle;)V
+
+  public abstract void attributeIsNotOwned(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandle;)V
+
+  public abstract void attributeIsOwnedByRTI(hla.rti1516e.ObjectInstanceHandle, hla.rti1516e.AttributeHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/ObjectInstanceHandle;Lhla/rti1516e/AttributeHandle;)V
+
+  public abstract void timeRegulationEnabled(hla.rti1516e.LogicalTime) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/LogicalTime;)V
+
+  public abstract void timeConstrainedEnabled(hla.rti1516e.LogicalTime) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/LogicalTime;)V
+
+  public abstract void timeAdvanceGrant(hla.rti1516e.LogicalTime) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/LogicalTime;)V
+
+  public abstract void requestRetraction(hla.rti1516e.MessageRetractionHandle) throws hla.rti1516e.exceptions.FederateInternalError;
+    descriptor: (Lhla/rti1516e/MessageRetractionHandle;)V
+}

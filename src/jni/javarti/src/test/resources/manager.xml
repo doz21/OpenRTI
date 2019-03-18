@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<objectModel xsi:schemaLocation="http://standards.ieee.org/IEEE1516-2010 http://standards.ieee.org/downloads/1516/1516.2-2010/IEEE1516-DIF-2010.xsd" xmlns="http://standards.ieee.org/IEEE1516-2010" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelIdentification>
+    <name>Manager</name>
+    <type>FOM</type>
+    <version>1.01</version>
+    <modificationDate>2017-06-07</modificationDate>
+    <securityClassification>Unclassified</securityClassification>
+    <purpose></purpose>
+    <applicationDomain>Engineering</applicationDomain>
+    <description>Simulationssteuerung</description>
+    <useLimitation>NA</useLimitation>
+    <poc>
+      <pocType>CKC</pocType>
+      <pocName>CKC</pocName>
+      <pocOrg>oToT</pocOrg>
+      <pocTelephone>TODO</pocTelephone>
+      <pocEmail>TODO</pocEmail>
+    </poc>
+    <other>Created by CKC 2017</other>
+    <glyph href="SIMDESK_HLA_32x32.png" type="PNG" height="32" width="32" alt="Manager Interaction Module">iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMNSURBVFhHxZc/TzJBEMYXQUGjCdGEwgYKvwCdFbWJjT0NsTShk4KWwsSElpJEQgGdFYmdhYWJxE4SbcAYLIyBUEFQ4Lxn3D32dvfQM3lffslkZndnduf2390FLBu2RFa4XhqB2WxmBQIBholQ9fv7O3t+fmbRaJQlEgm2urqq+VAnhviPjw/2+PhI7Xt7e2xjY0PzoXgkAGT98vJiHR0dWfaAGIEkHo9b5XKZ2mVf2RaUSiUrFos5sdvb29b5+bnmC40sXLy+vlq7u7tOsCpnZ2fc00yxWDTGQfL5PPeaoyVwfHxsDBaCWWm329zbTb/ft+ypNsZBTLHaJry6uuKWmc/PT3Z9fc1Lbm5vb9lwOOQlHcTe3Nzw0jcrdhJkCO0HxAgBk8mE9CLg4xpT3RjpdBqtnoJpfHp6Il8gx7+9vbk2riqmWCcBAdYIu9bUASSXy3HPb9T4QqFgjIOcnJxwrzmYBo1Wq2WlUilXsHqUvEA7Tsrm5qYTi42JxMfjMfeaY0wAoCMEiU6QlB/szebEXl5e8lodz6sYN1UkEuElxkKhELd+x9raGrfctop2CoQ2obah/Jd4WdNjdTodVq/XqTIYDLLpdEpZN5tNuv/BxcUF29nZIRvtEOFrotvtcouxWq3G7u/vycZMIm59fZ1ls1nKwmo0GkjpvwreFWDpr+N/noBYQqFV6HsAd/RgMHCuUnl95XWW67CW1WqVnZ6eUpt9R7BMJkO2DAZG/0LL2Mtg/h4QWq1TwfeB3Q8JvgGAn3iwgvMOhBbIZbVtEab+hG2PR1pG2wN+BpaPYK/X0wZQ44390Tz8gUqlor20Dg4O6I3ohx/3gBABbNzt8sCy7O/v00vHK14G9b4SEHYymTQOLgQJyrEQEa/ibEIV1AuRGY1G7OHhgZfM3N3dueJFH2pfwNmEi5zkNpz/cDhMZS+2tra49TO+b0K8pOzNxks6uHAODw956RfwpfAFPtu8/h1M3/6L8L0JhcYPDP4hcBTtp6aNiaMp+8hiAvUL/w2BVxv0T/wmbsm/54x9ATX1MNm+iZFvAAAAAElFTkSuQmCC</glyph>
+  </modelIdentification>
+
+  <objects>
+    <objectClass>
+      <name>HLAobjectRoot</name>
+      <objectClass>
+        <name>SimLabFederate</name>
+        <sharing>PublishSubscribe</sharing>
+        <attribute>
+          <name>FederateName</name>
+          <dataType>HLAunicodeString</dataType>
+          <updateType>Static</updateType>
+          <updateCondition>NA</updateCondition>
+          <ownership>NoTransfer</ownership>
+          <sharing>PublishSubscribe</sharing>
+          <dimensions/>
+          <transportation>HLAreliable</transportation>
+          <order>Receive</order>
+          <semantics>Name</semantics>
+        </attribute>
+        <attribute>
+          <name>FederateState</name>
+          <dataType>FederateStateEnum</dataType>
+          <updateType>Conditional</updateType>
+          <updateCondition>OnChange</updateCondition>
+          <ownership>NoTransfer</ownership>
+          <sharing>PublishSubscribe</sharing>
+          <dimensions/>
+          <transportation>HLAreliable</transportation>
+          <order>Receive</order>
+          <semantics>Status, in welchem sich Federate gerade befindet</semantics>
+        </attribute>
+      </objectClass>
+    </objectClass>
+  </objects>
+  
+  <interactions>
+    <interactionClass>
+      <name>HLAinteractionRoot</name>
+      <interactionClass>
+          <name>Command</name>
+          <sharing>PublishSubscribe</sharing>
+          <dimensions/>
+          <transportation>HLAreliable</transportation>
+          <order>Receive</order>
+          <semantics>Manager Commands</semantics>
+          <parameter>
+              <name>Target</name>
+              <dataType>HLAunicodeString</dataType>
+              <semantics>Der Name von Zielfederate</semantics>
+          </parameter>
+	      <interactionClass>
+	          <name>Start</name>
+	          <semantics>Interaction zum  Starten der Simulation</semantics>
+	      </interactionClass>
+	      <interactionClass>
+	          <name>Stop</name>
+	          <semantics>Interaction zum  Stoppen der Simulation</semantics>
+	      </interactionClass>
+	      <interactionClass>
+	          <name>Exit</name>
+	          <semantics>Interaction zum  Exit der Simulation</semantics>
+	      </interactionClass>
+	      <interactionClass>
+	          <name>LoadData</name>
+	          <order>Receive</order>
+	          <semantics>Interaction zum Laden von Daten aus der Datei</semantics>
+	          <parameter>
+	              <name>FileName</name>
+	              <dataType>HLAunicodeString</dataType>
+	              <semantics>Datei für die Simulation</semantics>
+	          </parameter>
+	      </interactionClass>
+      </interactionClass>
+      <interactionClass>
+          <name>DataLoaded</name>
+          <sharing>PublishSubscribe</sharing>
+          <dimensions/>
+          <transportation>HLAreliable</transportation>
+          <order>Receive</order>
+          <semantics>Diese Interaction bestätigt das Laden von Daten</semantics>
+          <parameter>
+              <name>FederateName</name>
+              <dataType>HLAunicodeString</dataType>
+              <semantics>Name vom Federate, der erfolgreich die Daten geladen hat</semantics>
+          </parameter>
+      </interactionClass>
+      <interactionClass>
+          <name>DataLoadFailure</name>
+          <sharing>PublishSubscribe</sharing>
+          <dimensions/>
+          <transportation>HLAreliable</transportation>
+          <order>Receive</order>
+          <semantics>Muss vom Federate gesendet werden, der die Daten nicht laden konnte</semantics>
+          <parameter>
+              <name>FederateName</name>
+              <dataType>HLAunicodeString</dataType>
+              <semantics>Name vom Federate, der die Daten nicht laden konnte</semantics>
+          </parameter>
+          <parameter>
+              <name>ErrorMessage</name>
+              <dataType>HLAunicodeString</dataType>
+              <semantics>Die Erklärung, warum die Daten nicht geladen werden könnten</semantics>
+          </parameter>
+      </interactionClass>
+    </interactionClass>
+  </interactions>
+
+  <dataTypes>
+        <enumeratedDataTypes>
+            <enumeratedData>
+                <name>FederateStateEnum</name>
+                <representation>HLAinteger32BE</representation>
+                <semantics>Representiert Federate-Status</semantics>
+                <enumerator>
+                    <name>Started</name>
+                    <value>1</value>
+                </enumerator>
+                <enumerator>
+                    <name>Stopped</name>
+                    <value>2</value>
+                </enumerator>
+            </enumeratedData>
+        </enumeratedDataTypes>
+  </dataTypes>
+</objectModel>
