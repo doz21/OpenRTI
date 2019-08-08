@@ -34,7 +34,7 @@
 
 namespace OpenRTI {
 
-#if __cplusplus < 201103L
+#if __cplusplus < 201103L || defined(_WIN32)
 
 #if defined(HAVE_PERFORMANCE_COUNTER)
 

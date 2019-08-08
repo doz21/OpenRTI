@@ -24,7 +24,7 @@
 
 namespace OpenRTI {
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
 
 class ScopeLock : public std::unique_lock<std::mutex> {
 public:

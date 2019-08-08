@@ -27,7 +27,7 @@
 #include "Export.h"
 #include "Types.h"
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
 # include <chrono>
 # include <thread>
 #endif
@@ -42,7 +42,7 @@ public:
     _nsec(0)
   { }
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   static Clock now()
   {
     std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
@@ -52,7 +52,7 @@ public:
   static Clock now();
 #endif
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   static void sleep_for(const Clock& reltime)
   {
     std::this_thread::sleep_for(std::chrono::nanoseconds(reltime.getNSec()));

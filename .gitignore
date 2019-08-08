@@ -8,3 +8,5 @@ install_manifest.txt
 Testing
 .gdb_history
 *~
+build/
+

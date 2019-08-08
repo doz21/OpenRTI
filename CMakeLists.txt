@@ -16,6 +16,8 @@ MARK_AS_ADVANCED(OPENRTI_BUILD_SHARED)
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   SET(LINUX TRUE)
+ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+  SET(WINDOWS TRUE)
 ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
   SET(MACOS TRUE)
 ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "SunOS")
@@ -33,7 +35,7 @@ ENABLE_LANGUAGE(C)
 # Starting with cmake 3.1 we can easily change the
 # c++ standard version using
 # SET(CMAKE_CXX_STANDARD 14)
-
+SET(CMAKE_CXX_STANDARD 14)
 # Some whole project sensible defines
 IF(UNIX)
   # Make sure we get the right libc functions
@@ -66,14 +68,12 @@ IF(MSVC)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
   ENDIF()
   ADD_DEFINITIONS(-DRTI_DISABLE_WARNINGS)
+ELSE()
+  SET(CMAKE_CXX_FLAGS_RELEASE "-O3 -s -DNDEBUG -Wno-deprecated-declarations -Wno-deprecated")
 ENDIF()
 
 IF(MINGW OR CYGWIN)
-  IF(DEFINED ENV{DLLTOOL})
-    SET(DLLTOOL "$ENV{DLLTOOL}")
-  ELSE()
-    SET(DLLTOOL dlltool)
-  ENDIF()
+    SET(DLLTOOL ${CMAKE_DLLTOOL})
 ENDIF()
 
 # Change the default build type to something fast
@@ -125,9 +125,13 @@ ENDIF()
 
 INCLUDE(CheckCXXSourceRuns)
 IF(OPENRTI_INSTALL_WITH_RPATH)
-  SET(CMAKE_REQUIRED_FLAGS "-Wl,--enable-new-dtags")
-  CHECK_CXX_SOURCE_RUNS("int main() { return 0; }" hasEnableNewDTags)
-  SET(CMAKE_REQUIRED_FLAGS "")
+  IF(CMAKE_CROSSCOMPILING)
+    SET(hasEnableNewDTags FALSE)
+  ELSE()
+    SET(CMAKE_REQUIRED_FLAGS "-Wl,--enable-new-dtags")
+    CHECK_CXX_SOURCE_RUNS("int main() { return 0; }" hasEnableNewDTags)
+    SET(CMAKE_REQUIRED_FLAGS "")
+  ENDIF()
   IF(hasEnableNewDTags)
     SET(OPENRTI_RPATH_LINK_FLAGS "-Wl,--enable-new-dtags" CACHE INTERNAL "Linker flag to enable RUNPATH additional to RPATH.")
   ENDIF()

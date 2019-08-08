@@ -31,7 +31,7 @@
 
 namespace OpenRTI {
 
-#if __cplusplus < 201103L
+#if __cplusplus < 201103L || defined(_WIN32)
 
 // Windows Server 2008/Vista provides native conditions
 #if 0x0600 <= WINVER

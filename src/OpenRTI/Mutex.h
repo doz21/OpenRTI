@@ -22,7 +22,7 @@
 
 #include "Export.h"
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
 # include <mutex>
 #endif
 
@@ -33,26 +33,26 @@ class ScopeLock;
 
 class OPENRTI_API Mutex {
 public:
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   Mutex(void)
   { }
 #else
   Mutex(void);
 #endif
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   ~Mutex(void)
   { }
 #else
   ~Mutex(void);
 #endif
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   void lock(void)
   { _mutex.lock(); }
 #else
   void lock(void);
 #endif
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   void unlock(void)
   { _mutex.unlock(); }
 #else
@@ -63,7 +63,7 @@ private:
   Mutex(const Mutex&);
   Mutex& operator=(const Mutex&);
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   std::mutex _mutex;
 #else
   struct PrivateData;

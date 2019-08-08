@@ -22,7 +22,7 @@
 
 #include "Export.h"
 #include "ScopeLock.h"
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
 # include <condition_variable>
 # include "Clock.h"
 # include "Mutex.h"
@@ -35,39 +35,39 @@ class ScopeLock;
 
 class OPENRTI_API Condition {
 public:
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   Condition(void)
   { }
 #else
   Condition(void);
 #endif
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   ~Condition(void)
   { }
 #else
   ~Condition(void);
 #endif
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   void notify_one(void)
   { _condition.notify_one(); }
 #else
   void notify_one(void);
 #endif
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   void notify_all(void)
   { _condition.notify_all(); }
 #else
   void notify_all(void);
 #endif
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   void wait(ScopeLock& scopeLock)
   { _condition.wait(scopeLock); }
 #else
   void wait(ScopeLock& scopeLock);
 #endif
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   bool wait_until(ScopeLock& scopeLock, const Clock& timeout)
   {
     std::chrono::steady_clock::time_point tp(std::chrono::nanoseconds(timeout.getNSec()));
@@ -81,7 +81,7 @@ private:
   Condition(const Condition&);
   Condition& operator=(const Condition&);
 
-#if 201103L <= __cplusplus
+#if 201103L <= __cplusplus && !defined(_WIN32)
   std::condition_variable _condition;
 #else
   struct PrivateData;

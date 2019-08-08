@@ -23,7 +23,7 @@
 
 namespace OpenRTI {
 
-#if __cplusplus < 201103L
+#if __cplusplus < 201103L || defined(_WIN32)
 Mutex::Mutex(void) :
   _privateData(new PrivateData)
 {

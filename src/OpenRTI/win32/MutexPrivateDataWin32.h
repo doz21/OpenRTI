@@ -28,7 +28,7 @@
 
 namespace OpenRTI {
 
-#if __cplusplus < 201103L
+#if __cplusplus < 201103L || defined(_WIN32)
 struct Mutex::PrivateData {
   PrivateData()
   {

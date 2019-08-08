@@ -61,7 +61,7 @@ ENDIF()
 
 
 # A bunch of sources that are operating system dependent.
-IF(WIN32)
+IF(WINDOWS)
   SET(OpenRTI_OS_SOURCES
     win32/AtomicWin32.cpp
     win32/ClockWin32.cpp
@@ -84,7 +84,7 @@ IF(WIN32)
     win32/ThreadLocalWin32.cpp
     win32/ThreadWin32.cpp
   )
-ELSE(WIN32)
+ELSE(WINDOWS)
   SET(OpenRTI_OS_SOURCES
     posix/AtomicPosix.cpp
     posix/ClockPosix.cpp
@@ -106,7 +106,7 @@ ELSE(WIN32)
     posix/ThreadLocalPosix.cpp
     posix/ThreadPosix.cpp
   )
-ENDIF(WIN32)
+ENDIF(WINDOWS)
 
 # We use expat as xml parser, if not on the system, use our own probaby outdated version
 INCLUDE(FindEXPAT)
