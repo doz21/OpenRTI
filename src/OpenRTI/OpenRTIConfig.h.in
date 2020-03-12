@@ -37,6 +37,9 @@
 #define OpenRTI_DEPRECATED
 #endif
 
+#if defined(__arm__) || defined(__aarch64__)
+#  define OpenRTI_ATOMIC_USE_MUTEX
+#else
 #if 201103L <= __cplusplus
 // In any case this is the best choice as this provides a reliable api for any future
 # define OpenRTI_ATOMIC_USE_STD_ATOMIC
@@ -66,6 +69,7 @@
 # else
 // The sledge hammer ...
 #  define OpenRTI_ATOMIC_USE_MUTEX
+# endif
 # endif
 #endif
 
